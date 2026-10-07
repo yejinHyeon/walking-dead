@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>워커 맵 — 생존 전략 지도</title>
+  <meta name="description" content="워킹데드 세계관 생존 시뮬레이터: 실제 지도 위에서 물자, 위험, 거점을 분석하고 생존 전략을 세우세요.">
+  <meta name="theme-color" content="#111311">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🧟</span>
+      <div>
+        <h1>WALKER MAP</h1>
+        <p>생존 전략 지도</p>
+      </div>
+    </div>
+
+    <form id="searchForm" class="search" autocomplete="off">
+      <input id="searchInput" type="search" placeholder="지역 검색 (예: 신촌역, 부산 해운대)" aria-label="지역 검색">
+      <button type="submit" title="검색">🔍</button>
+      <ul id="searchResults" class="search-results" hidden></ul>
+    </form>
+
+    <div class="controls">
+      <label class="ctl">
+        <span>경과일</span>
+        <select id="scenarioSelect"></select>
+      </label>
+      <div class="ctl seg" role="group" aria-label="시간대">
+        <button type="button" data-time="day" class="active">☀️ 주간</button>
+        <button type="button" data-time="night">🌙 야간</button>
+      </div>
+      <label class="ctl">
+        <span>탐색 반경</span>
+        <select id="radiusSelect">
+          <option value="500">500m</option>
+          <option value="1000" selected>1km</option>
+          <option value="2000">2km</option>
+          <option value="3000">3km</option>
+        </select>
+      </label>
+      <button type="button" id="locateBtn" class="btn">📍 내 위치</button>
+      <button type="button" id="scanBtn" class="btn primary">📡 이 지역 정찰</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <div id="map" aria-label="지도"></div>
+
+    <div id="modeBanner" class="mode-banner" hidden>
+      <span id="modeText"></span>
+      <button type="button" id="modeCancel">취소</button>
+    </div>
+
+    <button type="button" id="panelToggle" class="panel-toggle" aria-controls="panel">📋 작전판</button>
+
+    <aside id="panel" class="panel">
+      <nav class="tabs" role="tablist">
+        <button type="button" role="tab" data-tab="intel" class="active">정찰</button>
+        <button type="button" role="tab" data-tab="layers">레이어</button>
+        <button type="button" role="tab" data-tab="plan">작전</button>
+        <button type="button" role="tab" data-tab="supply">보급</button>
+      </nav>
+
+      <!-- 정찰 -->
+      <section class="tab-body" data-tab="intel">
+        <div id="dataNotice" class="notice" hidden></div>
+        <div id="intelEmpty" class="empty">
+          <p>지도를 원하는 지역으로 옮기고<br><b>📡 이 지역 정찰</b>을 누르세요.</p>
+          <p class="muted">실제 OpenStreetMap 데이터로 마트·경찰서·병원·아파트 등을 찾아<br>워커 수와 위험도를 추정합니다.</p>
+        </div>
+        <div id="intelBody" hidden>
+          <div class="score-card">
+            <div class="score-ring"><span id="survivalIndex">–</span></div>
+            <div>
+              <div class="score-label">생존 지수</div>
+              <div id="survivalVerdict" class="score-verdict"></div>
+            </div>
+          </div>
+          <div class="stats">
+            <div><b id="statWalkers">–</b><span>추정 워커</span></div>
+            <div><b id="statSurvivors">–</b><span>추정 생존자</span></div>
+            <div><b id="statPlaces">–</b><span>확인된 장소</span></div>
+          </div>
+          <p class="muted small" id="originText"></p>
+
+          <h3>가장 가까운 자원</h3>
+          <ul id="nearestList" class="list"></ul>
+
+          <h3>추천 거점 <span class="muted small">방어력·자원 접근성·주변 위협 종합</span></h3>
+          <ul id="baseList" class="list"></ul>
+
+          <h3>약탈 우선순위 <span class="muted small">필요 자원 ÷ 위험 ÷ 거리</span></h3>
+          <ul id="lootList" class="list"></ul>
+
+          <h3>위험 구역 <span class="muted small">워커 밀집 예상</span></h3>
+          <ul id="threatList" class="list"></ul>
+        </div>
+      </section>
+
+      <!-- 레이어 -->
+      <section class="tab-body" data-tab="layers" hidden>
+        <label class="switch"><input type="checkbox" id="threatToggle" checked> 워커 밀집도 표시 (붉은 원)</label>
+        <label class="switch"><input type="checkbox" id="labelsToggle"> 장소 이름 항상 표시</label>
+        <div class="row gap">
+          <button type="button" class="btn small" id="layersAll">전체 켜기</button>
+          <button type="button" class="btn small" id="layersNone">전체 끄기</button>
+        </div>
+        <div id="layerGroups"></div>
+      </section>
+
+      <!-- 작전 -->
+      <section class="tab-body" data-tab="plan" hidden>
+        <h3>🏰 거점</h3>
+        <div id="baseBox" class="box"></div>
+        <div class="row gap">
+          <button type="button" class="btn small" data-mode="base">지도에서 거점 지정</button>
+          <button type="button" class="btn small ghost" id="clearBase">해제</button>
+        </div>
+
+        <h3>🧭 약탈 루트</h3>
+        <p class="muted small">거점(또는 내 위치)에서 출발해 경유지를 순서대로 돌고 귀환합니다. 장소 팝업의 <b>경유지 추가</b>나 아래 버튼을 쓰세요.</p>
+        <ol id="routeList" class="list route"></ol>
+        <div id="routeStats" class="route-stats"></div>
+        <div class="row gap">
+          <button type="button" class="btn small" data-mode="waypoint">지도 클릭으로 경유지 추가</button>
+          <button type="button" class="btn small" id="optimizeRoute">순서 최적화</button>
+          <button type="button" class="btn small ghost" id="clearRoute">초기화</button>
+        </div>
+
+        <h3>📌 전술 마커</h3>
+        <div class="row gap wrap" id="markerTypeBtns"></div>
+        <ul id="markerList" class="list"></ul>
+
+        <h3>💾 작전 파일</h3>
+        <div class="row gap wrap">
+          <button type="button" class="btn small" id="exportBtn">내보내기</button>
+          <label class="btn small">가져오기<input type="file" id="importInput" accept="application/json" hidden></label>
+          <button type="button" class="btn small ghost danger" id="resetAll">전체 초기화</button>
+        </div>
+      </section>
+
+      <!-- 보급 -->
+      <section class="tab-body" data-tab="supply" hidden>
+        <h3>👥 생존자 그룹</h3>
+        <div class="grid2" id="inventoryForm">
+          <label>인원 <input type="number" min="1" step="1" data-inv="people"></label>
+          <label>식량 (인·일분) <input type="number" min="0" step="1" data-inv="food"></label>
+          <label>물 (L) <input type="number" min="0" step="1" data-inv="water"></label>
+          <label>구급 키트 <input type="number" min="0" step="1" data-inv="medical"></label>
+          <label>탄약 (발) <input type="number" min="0" step="1" data-inv="ammo"></label>
+          <label>근접 무기 <input type="number" min="0" step="1" data-inv="melee"></label>
+          <label>연료 (L) <input type="number" min="0" step="1" data-inv="fuel"></label>
+        </div>
+        <div id="supplyReport" class="box"></div>
+        <h3>📊 현재 필요도</h3>
+        <p class="muted small">부족한 자원일수록 약탈 우선순위에 크게 반영됩니다.</p>
+        <div id="needBars"></div>
+        <h3>📜 생존 수칙</h3>
+        <ul class="rules">
+          <li>머리를 노려라. 소리는 무리를 부른다 — 총은 최후의 수단.</li>
+          <li>혼자 다니지 마라. 약탈은 2인 1조, 귀환 시간을 정해라.</li>
+          <li>물림 = 감염. 사지라면 즉시 절단을 고려하라.</li>
+          <li>죽은 자보다 산 자를 경계하라.</li>
+          <li>해가 지기 전에 거점으로 돌아와라.</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="loading" class="loading" hidden><div class="spinner"></div><span>정찰 중… 무전 대기</span></div>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/categories.js"></script>
+  <script src="js/overpass.js"></script>
+  <script src="js/analysis.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
