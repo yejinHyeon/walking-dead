@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "language": "en",
+    "note": "사람이 직접 고르는 목록. 앱은 진단하지 않는다."
+  },
+  "types": [
+    {
+      "id": "burn",
+      "t": "Burn",
+      "d": "Red or blistered, white or black skin",
+      "topic": "burn"
+    },
+    {
+      "id": "bleeding",
+      "t": "Cut · bleeding",
+      "d": "Blood keeps coming",
+      "topic": "bleeding"
+    },
+    {
+      "id": "scrape",
+      "t": "Scrape · small wound",
+      "d": "A little blood, dirt in it",
+      "topic": "wound_care"
+    },
+    {
+      "id": "fracture",
+      "t": "Possible fracture",
+      "d": "Swollen, odd shape, severe pain on moving",
+      "topic": "fracture"
+    },
+    {
+      "id": "blast",
+      "t": "Fragment · blast wound",
+      "d": "Several small holes, pieces stuck in",
+      "topic": "blast"
+    }
+  ]
+}

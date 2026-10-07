@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "language": "en",
+    "review": "pending",
+    "sources": {
+      "FSIS": "USDA FSIS, Keeping Food Safe During an Emergency"
+    }
+  },
+  "foods": {
+    "tuna": "Canned tuna",
+    "ramen": "Instant noodles",
+    "crackers": "Crackers",
+    "peanut_butter": "Peanut butter",
+    "rice": "Rice",
+    "canned_food": "Other canned food",
+    "bread": "Bread",
+    "energy_bar": "Energy bar",
+    "instant_rice": "Instant rice"
+  },
+  "recipes": [
+    {
+      "id": "tuna_crackers",
+      "title": "Tuna on crackers",
+      "needs": [
+        "tuna",
+        "crackers"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 2,
+      "ingredients": "1 can tuna · crackers",
+      "steps": [
+        "Open the can and pour off the oil (keep it — add it to other food for calories).",
+        "Put tuna on the crackers and eat.",
+        "Eat leftover tuna within 2 hours. Without a fridge, don't keep it."
+      ]
+    },
+    {
+      "id": "pb_crackers",
+      "title": "Peanut butter crackers",
+      "needs": [
+        "peanut_butter",
+        "crackers"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 2,
+      "ingredients": "Peanut butter · crackers",
+      "steps": [
+        "Spread peanut butter on crackers.",
+        "Peanut butter is high in calories and keeps a long time. Keep the lid tight.",
+        "Check first that nobody has a peanut allergy."
+      ]
+    },
+    {
+      "id": "raw_ramen",
+      "title": "Crushed dry noodles",
+      "needs": [
+        "ramen"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 1,
+      "ingredients": "Instant noodles · a little seasoning",
+      "steps": [
+        "Crush the noodles inside the bag.",
+        "Use only a little seasoning. Salty food makes you need more water.",
+        "When water is short, skip the seasoning."
+      ]
+    },
+    {
+      "id": "tuna_ramen",
+      "title": "Tuna noodles (fuel-saving)",
+      "needs": [
+        "ramen",
+        "tuna"
+      ],
+      "fire": true,
+      "waterMl": 500,
+      "fireMin": 5,
+      "serves": 2,
+      "ingredients": "1 pack noodles · 1 can tuna · 500 ml water",
+      "steps": [
+        "Bring 500 ml of water to a boil with the lid on. A lid saves fuel.",
+        "Add noodles and half the seasoning, boil 2 minutes, then turn off the heat.",
+        "Add the tuna, cover and leave 3 minutes — the remaining heat finishes cooking.",
+        "Drink the broth too — it gives water and calories."
+      ]
+    },
+    {
+      "id": "soaked_rice",
+      "title": "Soaked rice porridge",
+      "needs": [
+        "rice"
+      ],
+      "fire": true,
+      "waterMl": 800,
+      "fireMin": 10,
+      "serves": 2,
+      "ingredients": "1 cup rice · 800 ml water",
+      "steps": [
+        "Soak the rice in water for at least 2 hours. Soaking saves a lot of fuel.",
+        "Put the soaked rice and water in a pot, cover and bring to a boil.",
+        "Stir on low heat for 5 minutes, turn off, cover and leave 10 minutes.",
+        "A pinch of salt makes it good for diarrhoea or dehydration too."
+      ]
+    },
+    {
+      "id": "canned_plain",
+      "title": "Canned food as is",
+      "needs": [
+        "canned_food"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 1,
+      "ingredients": "Canned food",
+      "steps": [
+        "Most canned food is already cooked and can be eaten without heating.",
+        "To heat it, always open the can first and move the food to a pot, or stand the open can in hot water.",
+        "The liquid in the can has nutrients and water too."
+      ]
+    }
+  ]
+}

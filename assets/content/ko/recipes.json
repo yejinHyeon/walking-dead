@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "language": "ko",
+    "review": "pending",
+    "sources": {
+      "FSIS": "USDA FSIS, Keeping Food Safe During an Emergency"
+    }
+  },
+  "foods": {
+    "tuna": "참치 통조림",
+    "ramen": "라면",
+    "crackers": "크래커",
+    "peanut_butter": "땅콩버터",
+    "rice": "쌀",
+    "canned_food": "기타 통조림",
+    "bread": "빵",
+    "energy_bar": "에너지바",
+    "instant_rice": "즉석밥"
+  },
+  "recipes": [
+    {
+      "id": "tuna_crackers",
+      "title": "참치 크래커",
+      "needs": [
+        "tuna",
+        "crackers"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 2,
+      "ingredients": "참치 통조림 1개 · 크래커",
+      "steps": [
+        "캔을 열고 기름을 따라내세요 (기름은 버리지 말고 다른 음식에 쓰면 열량이 돼요).",
+        "크래커 위에 참치를 얹어 드세요.",
+        "남은 참치는 2시간 안에 먹으세요. 냉장이 안 되면 보관하지 마세요."
+      ]
+    },
+    {
+      "id": "pb_crackers",
+      "title": "땅콩버터 크래커",
+      "needs": [
+        "peanut_butter",
+        "crackers"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 2,
+      "ingredients": "땅콩버터 · 크래커",
+      "steps": [
+        "크래커에 땅콩버터를 바르세요.",
+        "땅콩버터는 열량이 높고 오래 보관돼요. 뚜껑을 꼭 닫아 두세요.",
+        "땅콩 알레르기가 있는 사람이 없는지 먼저 확인하세요."
+      ]
+    },
+    {
+      "id": "raw_ramen",
+      "title": "생라면 부숴 먹기",
+      "needs": [
+        "ramen"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 1,
+      "ingredients": "라면 · 스프는 조금만",
+      "steps": [
+        "봉지째 면을 잘게 부수세요.",
+        "스프는 아주 조금만 뿌리세요. 짠 음식은 물을 더 마시게 해요.",
+        "물이 부족할 때는 스프를 빼세요."
+      ]
+    },
+    {
+      "id": "tuna_ramen",
+      "title": "참치 라면 (연료 절약)",
+      "needs": [
+        "ramen",
+        "tuna"
+      ],
+      "fire": true,
+      "waterMl": 500,
+      "fireMin": 5,
+      "serves": 2,
+      "ingredients": "라면 1개 · 참치 통조림 1개 · 물 500ml",
+      "steps": [
+        "냄비에 물 500ml를 붓고 뚜껑을 덮어 끓이세요. 뚜껑을 덮으면 연료가 덜 들어요.",
+        "면과 스프 절반을 넣고 2분 끓인 뒤 불을 끄세요.",
+        "참치를 넣고 뚜껑을 덮어 3분 두면 남은 열로 익어요.",
+        "국물까지 드세요. 물과 열량을 함께 보충할 수 있어요."
+      ]
+    },
+    {
+      "id": "soaked_rice",
+      "title": "불린 쌀죽",
+      "needs": [
+        "rice"
+      ],
+      "fire": true,
+      "waterMl": 800,
+      "fireMin": 10,
+      "serves": 2,
+      "ingredients": "쌀 1컵 · 물 800ml",
+      "steps": [
+        "쌀을 물에 2시간 이상 불리세요. 불리면 연료가 크게 줄어요.",
+        "불린 쌀과 물을 냄비에 넣고 뚜껑을 덮어 끓이세요.",
+        "끓으면 약한 불로 5분 저은 뒤 불을 끄고 뚜껑을 덮어 10분 뜸 들이세요.",
+        "소금을 조금 넣으면 설사·탈수가 있을 때도 먹기 좋아요."
+      ]
+    },
+    {
+      "id": "canned_plain",
+      "title": "통조림 그대로 먹기",
+      "needs": [
+        "canned_food"
+      ],
+      "fire": false,
+      "waterMl": 0,
+      "fireMin": 0,
+      "serves": 1,
+      "ingredients": "통조림",
+      "steps": [
+        "대부분의 통조림은 이미 익힌 음식이라 데우지 않아도 먹을 수 있어요.",
+        "데우고 싶으면 반드시 캔을 열고, 내용물을 냄비에 옮기거나 열린 캔을 물에 중탕하세요.",
+        "캔 국물에도 영양과 수분이 있어요."
+      ]
+    }
+  ]
+}

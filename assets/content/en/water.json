@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "language": "en",
+    "review": "pending",
+    "sources": {
+      "CDC": "CDC, Making Water Safe in an Emergency (2024)",
+      "WHO_SODIS": "WHO, Results of round II of the WHO international scheme to evaluate household water treatment technologies (SODIS)"
+    }
+  },
+  "methods": [
+    {
+      "id": "boil",
+      "label": "Boil",
+      "intro": "The most reliable method. If you have fuel, use this first.",
+      "sources": [
+        "CDC"
+      ],
+      "steps": [
+        "If the water is cloudy, filter it through a clean cloth and let it settle. Use only the clear water on top.",
+        "Bring to a rolling boil, then boil 1 more minute. At high altitude (over 2,000 m), 3 minutes.",
+        "Let it cool with a lid on and store it in a clean container."
+      ]
+    },
+    {
+      "id": "bleach",
+      "label": "Bleach",
+      "intro": "When you cannot use fire. Use only unscented household bleach.",
+      "sources": [
+        "CDC"
+      ],
+      "steps": [
+        "Check the chlorine strength on the label. For 6–8%, use 2 drops per 1 L of water, 4 drops if cloudy.",
+        "Stir and wait 30 minutes.",
+        "It should smell slightly of chlorine. If not, add the same amount again and wait 15 more minutes."
+      ]
+    },
+    {
+      "id": "sun",
+      "label": "Sunlight",
+      "intro": "When you have no fuel or chemicals. Works only with clear water.",
+      "sources": [
+        "WHO_SODIS"
+      ],
+      "steps": [
+        "Fill a clear plastic PET bottle (2 L or smaller) with clear water and close the cap.",
+        "Lay it in full sun for 6 hours. If it is very cloudy, 2 days.",
+        "Cloudy water, colored bottles and glass bottles work less well."
+      ]
+    }
+  ]
+}

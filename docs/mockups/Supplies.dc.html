@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>보유품</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 12px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Main.dc.html" aria-label="뒤로" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="flex: 1; font-size: 18px; font-weight: 700">지금 가진 것</span>
+  </div>
+  <div style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 16px; display: flex; flex-direction: column; gap: 8px; flex-direction: row; align-items: center; justify-content: space-between">
+    <span style="display: flex; flex-direction: column"><span style="font-size: 13px; color: #A9ADB3">함께 있는 사람</span><span style="font-size: 20px; font-weight: 700">{{people}}명</span></span>
+    <span style="display: flex; gap: 8px"><button aria-label="사람 줄이기" onClick="{{pDown}}" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #2A2E34; background: #15171A; color: #F1F0EC; font: inherit; font-size: 20px">−</button><button aria-label="사람 늘리기" onClick="{{pUp}}" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #2A2E34; background: #15171A; color: #F1F0EC; font: inherit; font-size: 20px">+</button></span>
+  </div>
+  <div style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 16px; display: flex; flex-direction: column; gap: 8px; flex-direction: row; align-items: center; justify-content: space-between">
+    <span style="display: flex; flex-direction: column"><span style="font-size: 13px; color: #A9ADB3">마실 물</span><span style="font-size: 20px; font-weight: 700">{{water}}L</span></span>
+    <span style="display: flex; gap: 8px"><button aria-label="물 줄이기" onClick="{{wDown}}" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #2A2E34; background: #15171A; color: #F1F0EC; font: inherit; font-size: 20px">−</button><button aria-label="물 늘리기" onClick="{{wUp}}" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #2A2E34; background: #15171A; color: #F1F0EC; font: inherit; font-size: 20px">+</button></span>
+  </div>
+  <div style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 16px; display: flex; flex-direction: column; gap: 8px; gap: 4px">
+    <span style="font-size: 13px; color: #A9ADB3">식량 · 끼니 분량</span>
+    <sc-for list="{{foods}}" as="f" hint-placeholder-count="4">
+      <div style="display: flex; align-items: center; justify-content: space-between; min-height: 48px">
+        <span style="font-size: 15px">{{f.t}} <b style="margin-left: 6px">{{f.n}}</b></span>
+        <span style="display: flex; gap: 8px"><button aria-label="줄이기" onClick="{{f.down}}" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #2A2E34; background: #15171A; color: #F1F0EC; font: inherit; font-size: 20px">−</button><button aria-label="늘리기" onClick="{{f.up}}" style="width: 44px; height: 44px; border-radius: 14px; border: 1px solid #2A2E34; background: #15171A; color: #F1F0EC; font: inherit; font-size: 20px">+</button></span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+    <div style="{{waterBox}}"><span style="font-size: 13px">물 기준</span><span style="font-size: 26px; font-weight: 700">{{wDays}}일</span></div>
+    <div style="{{foodBox}}"><span style="font-size: 13px">식량 기준</span><span style="font-size: 26px; font-weight: 700">{{fDays}}일</span></div>
+  </div>
+  <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #D9D8D3">{{advice}}</p>
+  <div style="display: flex; gap: 10px; margin-top: auto">
+    <a href="Water.dc.html" style="flex: 1; height: 52px; border-radius: 16px; border: 1px solid #2A2E34; background: #1B1E22; color: #F1F0EC; font-size: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none">마실 물 만들기</a>
+    <a href="Recipes.dc.html" style="flex: 1; height: 52px; border-radius: 16px; background: #7FB2FF; color: #111315; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none">이걸로 뭘 먹지?</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const people = st.people ?? 3;
+    const water = st.water ?? 8;
+    const base = [{ t: '참치 통조림', n: 3 }, { t: '라면', n: 4 }, { t: '크래커', n: 2 }, { t: '땅콩버터', n: 4 }];
+    const counts = st.counts || base.map((x) => x.n);
+    const meals = counts.reduce((a, b) => a + b, 0);
+    const wDays = Math.floor(water / (people * 3) * 10) / 10;
+    const fDays = Math.floor(meals / (people * 3) * 10) / 10;
+    const accent = this.props.accent ?? '#FF8A3D';
+    const box = (low) => 'border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; ' + (low ? 'background: ' + accent + '; color: #111315;' : 'background: #1B1E22; color: #F1F0EC; border: 1px solid #2A2E34;');
+    const setC = (k, d) => () => { const c = counts.slice(); c[k] = Math.max(0, c[k] + d); this.setState({ counts: c }); };
+    return {
+      people, water, wDays, fDays,
+      waterBox: box(wDays <= fDays),
+      foodBox: box(fDays < wDays),
+      advice: wDays <= fDays
+        ? '물이 먼저 떨어져요. 짠 음식과 고기·생선은 조금씩 드세요. 목이 마르면 참지 말고 마시고, 대신 땀 흘리는 활동을 줄이세요. (1인 하루 3L 기준)'
+        : '식량이 먼저 떨어져요. 상하기 쉬운 것부터 먹고, 통조림과 건조식품은 나중을 위해 남겨두세요. (하루 3끼 기준)',
+      pUp: () => this.setState({ people: people + 1 }),
+      pDown: () => this.setState({ people: Math.max(1, people - 1) }),
+      wUp: () => this.setState({ water: water + 1 }),
+      wDown: () => this.setState({ water: Math.max(0, water - 1) }),
+      foods: base.map((x, k) => ({ t: x.t, n: counts[k], up: setC(k, 1), down: setC(k, -1) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

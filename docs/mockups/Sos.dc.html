@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>구조 신호</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 14px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Main.dc.html" aria-label="뒤로" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="flex: 1; font-size: 18px; font-weight: 700">구조 신호</span>
+  </div>
+  <div style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 13px; color: #A9ADB3">내 위치 · GPS는 인터넷 없이도 작동해요</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 500">[위도], [경도]</span>
+    <span style="font-size: 14px; color: #A9ADB3">구조대와 연락되면 이 숫자를 불러주세요.</span>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+    <sc-for list="{{sigs}}" as="s" hint-placeholder-count="4">
+      <button onClick="{{s.toggle}}" aria-pressed="{{s.on}}" style="{{s.style}}">
+        <span style="font-size: 17px; font-weight: 700">{{s.t}}</span>
+        <span style="font-size: 12px; opacity: 0.85">{{s.state}}</span>
+      </button>
+    </sc-for>
+  </div>
+  <div style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 13px; color: #A9ADB3">SOS 신호 · 빛이나 소리로</span>
+    <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap">
+      <span style="width: 12px; height: 12px; border-radius: 6px; background: #F1F0EC"></span><span style="width: 12px; height: 12px; border-radius: 6px; background: #F1F0EC"></span><span style="width: 12px; height: 12px; border-radius: 6px; background: #F1F0EC"></span>
+      <span style="width: 8px"></span>
+      <span style="width: 32px; height: 12px; border-radius: 6px; background: #F1F0EC"></span><span style="width: 32px; height: 12px; border-radius: 6px; background: #F1F0EC"></span><span style="width: 32px; height: 12px; border-radius: 6px; background: #F1F0EC"></span>
+      <span style="width: 8px"></span>
+      <span style="width: 12px; height: 12px; border-radius: 6px; background: #F1F0EC"></span><span style="width: 12px; height: 12px; border-radius: 6px; background: #F1F0EC"></span><span style="width: 12px; height: 12px; border-radius: 6px; background: #F1F0EC"></span>
+    </div>
+    <span style="font-size: 14px; line-height: 1.5">짧게 3번 · 길게 3번 · 짧게 3번. 호루라기는 3번씩 반복하면 구조 신호로 알아들어요.</span>
+  </div>
+  <div style="border-radius: 18px; border: 2px solid {{accent}}; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+    <span style="font-size: 15px; font-weight: 700; color: {{accent}}">먼저 주변을 확인하세요</span>
+    <span style="font-size: 14px; line-height: 1.5">교전이 있는 곳에서는 빛과 소리가 내 위치를 드러낼 수 있어요. 구조대가 가까이 있을 때 쓰세요.</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const list = [
+      { t: '손전등 SOS', hot: true }, { t: '경보음', hot: true },
+      { t: '화면 깜빡임', hot: false }, { t: '진동 신호', hot: false }
+    ];
+    const on = (this.state && this.state.on);
+    const accent = this.props.accent ?? '#FF8A3D';
+    return {
+      accent,
+      sigs: list.map((x, k) => {
+        const active = on === k;
+        return {
+          ...x,
+          on: active ? 'true' : 'false',
+          state: active ? '켜짐 · 눌러서 끄기' : '눌러서 켜기',
+          style: 'min-height: 84px; border-radius: 18px; font: inherit; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; padding: 14px 16px; ' +
+            (active ? 'background: ' + accent + '; color: #111315; border: 0;' : 'background: #1B1E22; color: #F1F0EC; border: 1px solid #2A2E34;'),
+          toggle: () => this.setState({ on: active ? null : k })
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

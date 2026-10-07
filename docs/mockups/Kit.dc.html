@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>비상 배낭</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 14px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Family.dc.html" aria-label="뒤로" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="flex: 1; font-size: 18px; font-weight: 700">비상 배낭</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 15px; color: #A9ADB3">{{progress}}</span>
+    <div style="height: 8px; border-radius: 4px; background: #2A2E34; overflow: hidden"><div style="{{bar}}"></div></div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <sc-for list="{{items}}" as="it" hint-placeholder-count="12">
+      <button onClick="{{it.toggle}}" aria-pressed="{{it.on}}" style="min-height: 48px; padding: 4px 14px; border-radius: 14px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; gap: 12px; font: inherit; color: #F1F0EC; text-align: left">
+        <span style="{{it.box}}">{{it.mark}}</span>
+        <span style="display: flex; flex-direction: column">
+          <span style="font-size: 15px; font-weight: 700">{{it.t}}</span>
+          <sc-if value="{{it.hasD}}" hint-placeholder-val="{{true}}"><span style="font-size: 12px; color: #A9ADB3">{{it.d}}</span></sc-if>
+        </span>
+      </button>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const list = [
+      { t: '물', d: '[가족 수 × 3일 분량]' }, { t: '비상식량', d: '조리 없이 먹을 수 있는 것' },
+      { t: '구급상자', d: '붕대, 거즈, 소독약, 지혈대' }, { t: '평소 먹는 약', d: '처방전 사본도 함께' },
+      { t: '손전등 · 여분 건전지', d: '' }, { t: '보조배터리 · 충전선', d: '' },
+      { t: '휴대용 라디오', d: '전기·통신이 끊겨도 소식 듣기' }, { t: '신분증 · 중요 서류 사본', d: '방수 봉투에' },
+      { t: '현금', d: '카드가 안 될 때' }, { t: '호루라기', d: '갇혔을 때 구조 신호' },
+      { t: '담요 · 여벌 옷', d: '' }, { t: '마스크 · 위생용품', d: '' }
+    ];
+    const on = (this.state && this.state.on) || { 0: true, 2: true, 4: true };
+    const done = list.filter((x, k) => on[k]).length;
+    const accent = this.props.accent ?? '#FF8A3D';
+    return {
+      progress: done + ' / ' + list.length + ' 준비됨',
+      bar: 'height: 8px; border-radius: 4px; background: #7FB2FF; width: ' + Math.round(done / list.length * 100) + '%;',
+      items: list.map((x, k) => ({
+        ...x,
+        hasD: !!x.d,
+        on: on[k] ? 'true' : 'false',
+        mark: on[k] ? '✓' : '',
+        box: 'width: 26px; height: 26px; border-radius: 8px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #111315; box-sizing: border-box; ' + (on[k] ? 'background: #7FB2FF;' : 'border: 2px solid #3A3F46;'),
+        toggle: () => this.setState({ on: { ...on, [k]: !on[k] } })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

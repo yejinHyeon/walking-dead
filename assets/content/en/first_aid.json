@@ -1,0 +1,166 @@
+{
+  "meta": {
+    "language": "en",
+    "review": "pending",
+    "reviewNote": "Medical text. Requires review by a medical professional before release.",
+    "sources": {
+      "IFRC2020": "IFRC International First Aid, Resuscitation and Education Guidelines 2020",
+      "KACPR2020": "Korean Association of CardioPulmonary Resuscitation, 2020 Korean CPR Guidelines",
+      "WHO_ORS": "WHO, The Treatment of Diarrhoea (2005)",
+      "TCCC": "TCCC/TECC civilian principles (MARCH order)"
+    }
+  },
+  "topics": [
+    {
+      "id": "bleeding",
+      "title": "Severe bleeding",
+      "summary": "Press to stop the bleeding",
+      "keywords": "blood bleeding tourniquet cut wound amputation",
+      "sources": ["IFRC2020"],
+      "redFlags": ["Blood is spurting", "Bleeding does not stop with pressure", "Pale, cold sweat, getting drowsy"],
+      "steps": [
+        { "title": "Press hard on the wound", "body": "Cover the wound with a clean cloth or clothing and press hard with both hands. No cloth? Press with your bare hands right away." },
+        { "title": "Keep pressing — don't lift", "body": "If blood soaks through, don't remove the cloth. Add more on top and press harder. Keep pressing for at least 10 minutes." },
+        { "title": "Pack deep wounds, then press", "body": "For deep wounds in the armpit, groin or neck, push cloth firmly into the wound, then press hard on top." },
+        { "title": "If an arm or leg keeps bleeding", "body": "Tie a tourniquet or wide strip of cloth (at least 4 cm) tightly 5–7 cm above the wound (toward the body). Put a stick in the knot and twist until the bleeding stops. Avoid joints." },
+        { "title": "Write down the time", "body": "Write the time the tourniquet was applied on the person or the tourniquet. Never loosen it yourself. Don't use thin string or wire." },
+        { "title": "Get help", "body": "Alert people nearby or medical staff. Keep the person lying down and warm, and keep talking to them. Don't pull out objects stuck in the wound." }
+      ]
+    },
+    {
+      "id": "unconscious",
+      "title": "Unconscious",
+      "summary": "Check breathing · CPR",
+      "keywords": "unconscious collapsed cardiac arrest breathing cpr compressions fainted",
+      "sources": ["KACPR2020", "IFRC2020"],
+      "redFlags": ["Not breathing, or only gasping", "No response when you try to wake them"],
+      "steps": [
+        { "title": "Check it is safe", "body": "Look for collapsing buildings, fire or fighting first. If it is dangerous, move the person somewhere safer." },
+        { "title": "Try to wake them", "body": "Tap their shoulders and shout. If there is no response, ask people nearby for help and for an AED (defibrillator)." },
+        { "title": "Look for breathing for 10 seconds", "body": "Watch the chest rise and fall. If they are breathing, roll them on their side (recovery position) with the mouth facing down and keep watching." },
+        { "title": "Not breathing? Push on the chest", "body": "Lay them on a firm surface and put both hands, one on top of the other, in the center of the chest. Arms straight, push hard about 5 cm deep, about 2 times per second (100–120 per minute)." },
+        { "title": "Don't stop", "body": "Let the chest come fully back up after each push. If you have learned rescue breaths, give 2 breaths after every 30 pushes. If not, just keep pushing." },
+        { "title": "Turn on the AED as soon as it arrives", "body": "Follow the voice prompts. Continue until the person moves and breathes normally or rescuers arrive. Swap every 2 minutes if you can." }
+      ]
+    },
+    {
+      "id": "choking",
+      "title": "Choking",
+      "summary": "When the airway is blocked",
+      "keywords": "choking airway blocked throat heimlich food",
+      "sources": ["IFRC2020", "KACPR2020"],
+      "redFlags": ["Cannot speak or cough", "Lips turning blue", "Loses consciousness"],
+      "steps": [
+        { "title": "Encourage coughing", "body": "If they can cough, let them keep coughing. Don't put your fingers in to pull it out." },
+        { "title": "Give 5 back blows", "body": "If they cannot speak or cough, lean them forward and hit firmly between the shoulder blades 5 times with the heel of your hand." },
+        { "title": "Give 5 abdominal thrusts", "body": "Stand behind, wrap your arms around their waist, put a fist between the belly button and the bottom of the breastbone, grab it with your other hand and pull sharply inward and up. For pregnant or very large people, pull on the lower chest instead." },
+        { "title": "Keep alternating", "body": "Repeat 5 back blows and 5 thrusts until the object comes out." },
+        { "title": "If they lose consciousness", "body": "Lay them on the floor and start chest compressions (CPR) right away. Only remove objects you can see in the mouth." }
+      ]
+    },
+    {
+      "id": "burn",
+      "title": "Burns",
+      "summary": "Cool and cover",
+      "keywords": "burn fire scald hot chemical electric",
+      "sources": ["IFRC2020"],
+      "redFlags": ["Burns on the face, hands, feet or genitals", "Burn larger than the palm of the hand", "Skin turns white or black", "Breathing difficulty after smoke"],
+      "steps": [
+        { "title": "Cool with running water for 20 minutes", "body": "Cool, not ice-cold water. If water is short, keep changing wet cloths." },
+        { "title": "Remove rings, watches and tight clothing before swelling", "body": "Don't pull off clothing stuck to the skin — cut around it." },
+        { "title": "No ice, butter or toothpaste", "body": "No oil or other home remedies either. Don't break blisters." },
+        { "title": "Cover loosely with clean plastic wrap or cloth", "body": "Lay cling film on the burn — don't wrap it around. For large burns, cover the body with a blanket to keep warm." },
+        { "title": "Chemical burns", "body": "Brush off dry powder first, then rinse with running water for at least 20 minutes. Remove contaminated clothing." }
+      ]
+    },
+    {
+      "id": "fracture",
+      "title": "Fractures",
+      "summary": "Keep it still",
+      "keywords": "fracture broken bone sprain splint dislocation spine neck",
+      "sources": ["IFRC2020"],
+      "redFlags": ["Bone sticking out of the skin", "Limb is twisted out of shape", "Hand or foot is cold and pale", "Neck or back pain after a fall or blast"],
+      "steps": [
+        { "title": "Don't move it", "body": "Support the injured part in the position you found it. Don't try to straighten a twisted limb." },
+        { "title": "Cover any bone that shows", "body": "Don't push it back in. Cover with a clean cloth and press around — not on — the wound to control bleeding." },
+        { "title": "Splint it", "body": "Place a board, thick cardboard or a magazine so it reaches the joints above and below the injury, and tie it with cloth. Don't tie directly over the injury." },
+        { "title": "Check fingers and toes", "body": "If they turn blue, cold or numb, loosen the ties." },
+        { "title": "If the neck or back may be hurt", "body": "Unless there is immediate danger such as fire or collapse, don't move them. Hold their head still with both hands." }
+      ]
+    },
+    {
+      "id": "blast",
+      "title": "Blast injuries",
+      "summary": "Check for bleeding in many places",
+      "keywords": "blast explosion shrapnel shelling gunshot penetrating war bomb",
+      "sources": ["IFRC2020", "TCCC"],
+      "redFlags": ["Heavy bleeding from an arm or leg", "Air sucking sound from a chest wound", "Breathing getting worse", "Coughing blood"],
+      "steps": [
+        { "title": "Get to safety first", "body": "If the attack continues, taking cover comes before treatment. If the injured person can move, have them take cover themselves." },
+        { "title": "Stop major bleeding first", "body": "Heavy bleeding from an arm or leg: apply a tourniquet right away. Elsewhere: pack with cloth and press hard." },
+        { "title": "Sweep the whole body with your hands", "body": "Fragments hit many places. Run your hands over the back, armpits and groin to find missed bleeding. Look for both entry and exit wounds." },
+        { "title": "Check breathing", "body": "If unconscious, lift the chin to open the airway. If air leaks from a chest wound, cover the whole wound with plastic or cling film and tape it down. If breathing gets worse, lift one edge briefly." },
+        { "title": "Keep them warm", "body": "People who have lost blood get cold fast. Block the cold from the ground and cover them." },
+        { "title": "Watch even if they look fine", "body": "Being close to a blast can damage the lungs, belly and inner ears. Get help for shortness of breath, belly pain or coughing blood. Don't pull out fragments." }
+      ]
+    },
+    {
+      "id": "shock",
+      "title": "Shock",
+      "summary": "Lay down and keep warm",
+      "keywords": "shock pale cold sweat pulse dizzy",
+      "sources": ["IFRC2020"],
+      "redFlags": ["Pale with cold sweat", "Fast, weak pulse", "Confused or drowsy"],
+      "steps": [
+        { "title": "Treat the cause first", "body": "If there is bleeding, stop it first." },
+        { "title": "Lay them down", "body": "Lay them flat. If the legs, pelvis and back are not injured, raise the legs about 30 cm." },
+        { "title": "Keep them warm", "body": "Cover with a blanket and block the cold from the ground. Loosen tight clothing." },
+        { "title": "Nothing to eat or drink", "body": "Stay with them and keep checking breathing and consciousness." }
+      ]
+    },
+    {
+      "id": "hypothermia",
+      "title": "Hypothermia",
+      "summary": "Warm up slowly",
+      "keywords": "hypothermia cold shivering frostbite winter wet clothes",
+      "sources": ["IFRC2020"],
+      "redFlags": ["Shivering stops", "Slurred speech, confusion", "Slow breathing"],
+      "steps": [
+        { "title": "Get out of the wind and cold", "body": "Move indoors or out of the wind and put insulation under them." },
+        { "title": "Remove wet clothing", "body": "Wrap in dry clothes, blankets or a foil blanket. Cover the head and neck too." },
+        { "title": "Warm the core first", "body": "Warm the chest, neck, armpits and groin with wrapped heat packs or body heat. Don't rub the arms and legs." },
+        { "title": "Warm sweet drink if fully alert", "body": "Give small sips. Never give alcohol. Keep movement to a minimum and handle gently." }
+      ]
+    },
+    {
+      "id": "child",
+      "title": "Babies · Children",
+      "summary": "Methods for small bodies",
+      "keywords": "baby infant child kid choking cpr dehydration diarrhoea",
+      "sources": ["KACPR2020", "IFRC2020", "WHO_ORS"],
+      "redFlags": ["Floppy and not responding well", "No urine for 8 hours", "Struggling to breathe"],
+      "steps": [
+        { "title": "Baby choking (under 1 year)", "body": "Lay the baby face down along your forearm with the head lower than the body. Give 5 firm back blows between the shoulder blades." },
+        { "title": "Turn over and give 5 chest pushes", "body": "Turn the baby over and push the center of the chest 5 times with two fingers. Keep alternating 5 back blows and 5 chest pushes." },
+        { "title": "Baby not breathing", "body": "Push the center of the chest with two fingers about 4 cm deep, about 2 times per second. If you have learned rescue breaths, give 2 gentle breaths covering mouth and nose after every 30 pushes." },
+        { "title": "Children: one or two hands", "body": "Depending on size, push the center of the chest with one or two hands about 5 cm deep." },
+        { "title": "Weak from diarrhoea or vomiting", "body": "Dissolve 6 level teaspoons of sugar and half a teaspoon of salt in 1 L of clean water. Give small sips often. If it tastes too salty, throw it away and make it again. Keep breastfeeding." },
+        { "title": "Keep them warm", "body": "Children get cold and dehydrated much faster than adults. Keep them covered and check often." }
+      ]
+    },
+    {
+      "id": "wound_care",
+      "title": "Small wounds · Preventing infection",
+      "summary": "Clean, cover, check daily",
+      "keywords": "wound scrape graze clean infection pus bite",
+      "sources": ["IFRC2020"],
+      "redFlags": ["Spreading redness, heat or swelling", "Pus or bad smell", "Fever", "Animal or human bite"],
+      "steps": [
+        { "title": "Stop the bleeding first", "body": "Press with a clean cloth until it stops." },
+        { "title": "Rinse well with clean water", "body": "Pour drinking water or boiled-and-cooled water over it to wash out dirt. Rinsing matters more than antiseptic." },
+        { "title": "Cover it", "body": "Cover with clean gauze or cloth. Change it once a day, or straight away if it gets wet or dirty." },
+        { "title": "Check daily for infection", "body": "Spreading redness, heat, swelling, pus, smell or fever: show a medical worker. Wash bites with soap and water for at least 15 minutes and always get them seen." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>응급처치 목록</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 12px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Main.dc.html" aria-label="뒤로" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="flex: 1; font-size: 18px; font-weight: 700">응급처치</span>
+  </div>
+  <label style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 16px; border-radius: 16px; background: #1B1E22; border: 1px solid #2A2E34">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A9ADB3" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+    <span style="position: absolute; width: 1px; height: 1px; overflow: hidden">증상 검색</span>
+    <input placeholder="증상 검색 · 예: 피, 화상, 숨" style="flex: 1; background: transparent; border: 0; color: #F1F0EC; font: inherit; font-size: 15px; outline: none">
+  </label>
+  <a href="Scan.dc.html" style="height: 52px; border-radius: 16px; background: #23272C; border: 1px solid #3A3F46; display: flex; align-items: center; justify-content: center; gap: 10px; color: #F1F0EC; font-size: 15px; font-weight: 700; text-decoration: none">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7FB2FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>카메라로 상처 확인하기</a>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <sc-for list="{{items}}" as="it" hint-placeholder-count="9">
+      <a href="{{it.href}}" style="min-height: 52px; padding: 6px 16px; border-radius: 14px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #F1F0EC; text-decoration: none; box-sizing: border-box">
+        <span style="display: flex; flex-direction: column">
+          <span style="font-size: 16px; font-weight: 700">{{it.t}}</span>
+          <span style="font-size: 12px; color: #A9ADB3">{{it.d}}</span>
+        </span>
+        <span style="font-size: 18px; color: #6E737A">›</span>
+      </a>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      items: [
+        { t: '심한 출혈', d: '누르고 지혈하기', href: 'FirstAid.dc.html' },
+        { t: '의식 없음', d: '호흡 확인 · 심폐소생술', href: '#' },
+        { t: '숨 막힘', d: '기도가 막혔을 때', href: '#' },
+        { t: '화상', d: '식히고 덮기', href: 'WoundResult.dc.html' },
+        { t: '골절', d: '움직이지 않게 고정', href: '#' },
+        { t: '폭발 부상', d: '여러 곳 출혈 확인', href: '#' },
+        { t: '쇼크', d: '눕히고 따뜻하게', href: '#' },
+        { t: '저체온', d: '천천히 따뜻하게', href: '#' },
+        { t: '아기 · 어린이', d: '몸 크기에 맞는 방법', href: '#' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>가진 재료로 식사</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 12px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Supplies.dc.html" aria-label="뒤로" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="flex: 1; font-size: 18px; font-weight: 700">가진 재료로 식사</span>
+  </div>
+  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+    <sc-for list="{{filters}}" as="c" hint-placeholder-count="3">
+      <button onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button>
+    </sc-for>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{list}}" as="r" hint-placeholder-count="4">
+      <a href="{{r.href}}" style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; color: #F1F0EC; text-decoration: none">
+        <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+          <span style="font-size: 17px; font-weight: 700">{{r.t}}</span>
+          <span style="{{r.haveStyle}}">{{r.have}}</span>
+        </span>
+        <span style="font-size: 13px; color: #A9ADB3">{{r.ing}}</span>
+        <span style="display: flex; gap: 6px; flex-wrap: wrap">
+          <sc-for list="{{r.tags}}" as="g" hint-placeholder-count="2">
+            <span style="height: 26px; padding: 0 10px; border-radius: 13px; background: #23272C; font-size: 12px; display: flex; align-items: center">{{g}}</span>
+          </sc-for>
+        </span>
+      </a>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const all = [
+      { t: '참치 크래커', ing: '참치 통조림 · 크래커', tags: ['불 없음', '물 0'], fire: false, water: 0, ok: true, href: '#' },
+      { t: '땅콩버터 크래커', ing: '땅콩버터 · 크래커', tags: ['불 없음', '물 0', '오래 보관'], fire: false, water: 0, ok: true, href: '#' },
+      { t: '생라면 부숴 먹기', ing: '라면 · 스프는 조금만', tags: ['불 없음', '물 0'], fire: false, water: 0, ok: true, href: '#' },
+      { t: '참치 라면 (연료 절약)', ing: '라면 · 참치 통조림', tags: ['불 5분', '물 500ml'], fire: true, water: 500, ok: true, href: 'RecipeDetail.dc.html' },
+      { t: '불린 쌀죽', ing: '쌀 · 물', tags: ['연료 적게', '물 많이'], fire: true, water: 800, ok: false, href: '#' }
+    ];
+    const f = (this.state && this.state.f) || 'all';
+    const defs = [{ id: 'all', label: '전체' }, { id: 'nofire', label: '불 없이' }, { id: 'nowater', label: '물 없이' }];
+    const list = all.filter((r) => f === 'all' || (f === 'nofire' ? !r.fire : r.water === 0));
+    return {
+      filters: defs.map((d) => ({ ...d,
+        style: 'height: 44px; padding: 0 16px; border-radius: 22px; font: inherit; font-size: 14px; font-weight: 500; ' + (d.id === f ? 'background: #F1F0EC; color: #111315; border: 1px solid #F1F0EC;' : 'background: #1B1E22; color: #F1F0EC; border: 1px solid #2A2E34;'),
+        pick: () => this.setState({ f: d.id }) })),
+      list: list.map((r) => ({ ...r,
+        have: r.ok ? '지금 가능' : '쌀 필요',
+        haveStyle: 'font-size: 12px; font-weight: 700; flex: 0 0 auto; ' + (r.ok ? 'color: #7FB2FF;' : 'color: #A9ADB3;') }))
+    };
+  }
+}
+</script>
+</body>
+</html>

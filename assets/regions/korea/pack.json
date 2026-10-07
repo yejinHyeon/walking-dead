@@ -1,0 +1,207 @@
+{
+  "id": "korea",
+  "sample": true,
+  "name": {
+    "ko": "한국 (샘플)",
+    "en": "Korea (sample)"
+  },
+  "area": {
+    "ko": "[샘플 지역] 서울 중구 일대",
+    "en": "[Sample area] Jung-gu, Seoul"
+  },
+  "savedDate": "2026-10-01",
+  "center": {
+    "lat": 37.5663,
+    "lng": 126.9779
+  },
+  "languages": [
+    "ko",
+    "en"
+  ],
+  "emergencyNumbers": [
+    {
+      "number": "119",
+      "label": {
+        "ko": "화재 · 구조 · 구급",
+        "en": "Fire · Rescue · Ambulance"
+      }
+    },
+    {
+      "number": "112",
+      "label": {
+        "ko": "경찰",
+        "en": "Police"
+      }
+    },
+    {
+      "number": "1339",
+      "label": {
+        "ko": "질병관리청 (감염병)",
+        "en": "KDCA (infectious disease)"
+      }
+    },
+    {
+      "number": "122",
+      "label": {
+        "ko": "해양 긴급신고",
+        "en": "Maritime emergency"
+      }
+    }
+  ],
+  "places": [
+    {
+      "id": "s1",
+      "type": "shelter",
+      "name": {
+        "ko": "[샘플] 대피소 A · 지하 1층",
+        "en": "[Sample] Shelter A · B1"
+      },
+      "kind": {
+        "ko": "민방위 대피소 · 지하",
+        "en": "Public shelter · Underground"
+      },
+      "lat": 37.5695,
+      "lng": 126.9814,
+      "source": {
+        "ko": "[샘플] 지자체",
+        "en": "[Sample] Local government"
+      },
+      "verified": "2026-10-01"
+    },
+    {
+      "id": "s2",
+      "type": "shelter",
+      "name": {
+        "ko": "[샘플] 대피소 B · 지하철역",
+        "en": "[Sample] Shelter B · Subway station"
+      },
+      "kind": {
+        "ko": "민방위 대피소 · 지하철역",
+        "en": "Public shelter · Subway station"
+      },
+      "lat": 37.5642,
+      "lng": 126.9767,
+      "source": {
+        "ko": "[샘플] 지자체",
+        "en": "[Sample] Local government"
+      },
+      "verified": "2026-10-01"
+    },
+    {
+      "id": "s3",
+      "type": "shelter",
+      "name": {
+        "ko": "[샘플] 대피소 C · 지하주차장",
+        "en": "[Sample] Shelter C · Underground parking"
+      },
+      "kind": {
+        "ko": "민방위 대피소 · 지하주차장",
+        "en": "Public shelter · Underground parking"
+      },
+      "lat": 37.5731,
+      "lng": 126.9718,
+      "source": {
+        "ko": "[샘플] 지자체",
+        "en": "[Sample] Local government"
+      },
+      "verified": "2026-10-01"
+    },
+    {
+      "id": "a1",
+      "type": "aid",
+      "name": {
+        "ko": "[샘플] 구호품 배급소",
+        "en": "[Sample] Aid distribution point"
+      },
+      "kind": {
+        "ko": "구호품 배급",
+        "en": "Aid distribution"
+      },
+      "lat": 37.5618,
+      "lng": 126.982,
+      "source": {
+        "ko": "[샘플] 지자체",
+        "en": "[Sample] Local government"
+      },
+      "verified": "2026-10-01"
+    },
+    {
+      "id": "w1",
+      "type": "water",
+      "name": {
+        "ko": "[샘플] 급수 지점",
+        "en": "[Sample] Water point"
+      },
+      "kind": {
+        "ko": "비상 급수",
+        "en": "Emergency water"
+      },
+      "lat": 37.5675,
+      "lng": 126.973,
+      "source": {
+        "ko": "[샘플] 지자체",
+        "en": "[Sample] Local government"
+      },
+      "verified": "2026-10-01"
+    },
+    {
+      "id": "m1",
+      "type": "medical",
+      "name": {
+        "ko": "[샘플] 병원 응급실",
+        "en": "[Sample] Hospital emergency room"
+      },
+      "kind": {
+        "ko": "병원 · 응급실",
+        "en": "Hospital · Emergency"
+      },
+      "lat": 37.5718,
+      "lng": 126.9851,
+      "source": {
+        "ko": "[샘플] 지자체",
+        "en": "[Sample] Local government"
+      },
+      "verified": "2026-10-01"
+    },
+    {
+      "id": "m2",
+      "type": "medical",
+      "name": {
+        "ko": "[샘플] 약국",
+        "en": "[Sample] Pharmacy"
+      },
+      "kind": {
+        "ko": "약국",
+        "en": "Pharmacy"
+      },
+      "lat": 37.5654,
+      "lng": 126.9803,
+      "source": {
+        "ko": "[샘플] 지자체",
+        "en": "[Sample] Local government"
+      },
+      "verified": "2026-10-01"
+    }
+  ],
+  "dangerZones": [
+    {
+      "id": "d1",
+      "label": {
+        "ko": "[샘플] 위험 신고 구역",
+        "en": "[Sample] Reported danger"
+      },
+      "center": {
+        "lat": 37.5623,
+        "lng": 126.97240000000001
+      },
+      "radiusM": 180
+    }
+  ],
+  "sources": [
+    {
+      "ko": "샘플 데이터 — 실제 대피소 위치가 아님. 실제 지역팩은 tools/build_region_pack.py로 공공데이터포털 '민방위대피시설' 자료에서 생성.",
+      "en": "Sample data — not real shelter locations. Real packs are generated from the data.go.kr civil-defense shelter dataset via tools/build_region_pack.py."
+    }
+  ],
+  "tiles": null
+}

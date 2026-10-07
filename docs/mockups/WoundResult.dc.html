@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>상처 확인</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 12px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Scan.dc.html" aria-label="뒤로" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="flex: 1; font-size: 18px; font-weight: 700">상처 확인</span>
+  </div>
+  <div style="height: 110px; border-radius: 18px; border: 1px dashed #3A3F46; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #A9ADB3">[찍은 사진]</div>
+  <div style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 13px; color: #A9ADB3">이렇게 보여요 · 확실하지 않음</span>
+    <span style="font-size: 22px; font-weight: 700">화상</span>
+    <div style="display: flex; gap: 8px">
+      <button style="flex: 1; height: 44px; border-radius: 14px; border: 0; background: #F1F0EC; color: #111315; font: inherit; font-size: 15px; font-weight: 700">맞아요</button>
+      <a href="FirstAidList.dc.html" style="flex: 1; height: 44px; border-radius: 14px; border: 1px solid #2A2E34; color: #F1F0EC; font-size: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none">다른 상처예요</a>
+    </div>
+  </div>
+  <div style="border-radius: 18px; border: 2px solid {{accent}}; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+    <span style="font-size: 15px; font-weight: 700; color: {{accent}}">이럴 땐 지금 바로 도움을 요청하세요</span>
+    <span style="font-size: 14px; line-height: 1.6">얼굴·손·발·생식기 화상 · 손바닥보다 넓은 화상 · 피부가 하얗거나 검게 변함 · 연기를 마셔 숨쉬기 힘듦</span>
+  </div>
+  <div style="border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; padding: 16px; display: flex; flex-direction: column; gap: 8px; gap: 10px">
+    <span style="font-size: 13px; color: #A9ADB3">지금 할 일</span>
+    <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <span style="width: 26px; height: 26px; border-radius: 13px; background: #2A2E34; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex: 0 0 auto">{{s.n}}</span>
+        <span style="font-size: 15px; line-height: 1.5">{{s.t}}</span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#FF8A3D',
+      steps: [
+        { n: '1', t: '시원한 흐르는 물에 20분 동안 식히세요' },
+        { n: '2', t: '붓기 전에 반지, 시계, 꽉 끼는 옷을 빼세요' },
+        { n: '3', t: '얼음, 버터, 치약은 바르지 마세요. 물집은 터뜨리지 마세요' },
+        { n: '4', t: '깨끗한 랩이나 천으로 느슨하게 덮으세요' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>불발탄 안전 · UXO safety</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 18px">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="{{links.home}}" aria-label="{{t.back}}" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="font-size: 18px; font-weight: 700">{{t.head}}</span>
+  </div>
+
+  <div style="border-radius: 22px; background: {{accent}}; color: #111315; padding: 20px; display: flex; flex-direction: column; gap: 6px">
+    <span style="font-size: 30px; font-weight: 700; line-height: 1.2">{{t.big}}</span>
+    <span style="font-size: 15px; font-weight: 500; line-height: 1.5">{{t.sub}}</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{t.rules}}" as="r" hint-placeholder-count="4">
+      <div style="display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 16px; background: #1B1E22; border: 1px solid #2A2E34">
+        <span style="width: 32px; height: 32px; border-radius: 16px; background: #2A2E34; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: 0 0 auto">{{r.n}}</span>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 16px; font-weight: 700">{{r.t}}</span>
+          <span style="font-size: 13px; color: #A9ADB3; line-height: 1.5">{{r.d}}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <span style="font-size: 14px; color: #A9ADB3">{{t.watch}}</span>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+      <sc-for list="{{t.pics}}" as="p" hint-placeholder-count="3">
+        <div style="height: 96px; border-radius: 14px; border: 1px dashed #3A3F46; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; font-size: 12px; color: #A9ADB3; padding: 6px; line-height: 1.4">
+          <span>{{t.img}}</span>
+          <span>{{p}}</span>
+        </div>
+      </sc-for>
+    </div>
+    <span style="font-size: 12px; color: #A9ADB3">{{t.src}}</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"lang":{"editor":"enum","options":["ko","en"],"default":"ko"},"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = {
+      ko: {
+        back: '뒤로', head: '불발탄 · 지뢰 안전', big: '절대 만지지 마세요',
+        sub: '낯선 물건은 터지지 않은 폭발물일 수 있어요. 오래돼 보여도 위험합니다.',
+        rules: [
+          { n: '1', t: '멈추세요', d: '그 자리에서 움직임을 멈추세요.' },
+          { n: '2', t: '왔던 길로 돌아가세요', d: '발자국을 따라 천천히 되돌아가세요.' },
+          { n: '3', t: '표시하세요', d: '물건 말고 주변에 눈에 띄는 표시를 남기세요.' },
+          { n: '4', t: '신고하세요', d: '당국이나 구호 단체에 위치를 알리세요.' }
+        ],
+        watch: '이런 물건을 조심하세요', img: '[그림]',
+        pics: ['꼬리 날개 달린 금속', '장난감처럼 생긴 물체', '땅에 반쯤 묻힌 물체'],
+        src: '그림 자료: [UNMAS 등 공식 교육 자료 출처]'
+      },
+      en: {
+        back: 'Back', head: 'Unexploded ordnance & mines', big: 'Never touch it',
+        sub: 'Unfamiliar objects may be unexploded explosives. They are dangerous even if they look old.',
+        rules: [
+          { n: '1', t: 'Stop', d: 'Stop moving where you are.' },
+          { n: '2', t: 'Go back the way you came', d: 'Slowly retrace your own footsteps.' },
+          { n: '3', t: 'Mark the area', d: 'Leave a visible marker nearby, never on the object.' },
+          { n: '4', t: 'Report it', d: 'Tell authorities or an aid group where it is.' }
+        ],
+        watch: 'Watch out for objects like these', img: '[Image]',
+        pics: ['Metal with tail fins', 'Objects that look like toys', 'Half-buried objects'],
+        src: 'Images: [Official training source, e.g. UNMAS]'
+      }
+    };
+    const lang = this.props.lang === 'en' ? 'en' : 'ko';
+    return {
+      accent: this.props.accent ?? '#FF8A3D',
+      t: S[lang],
+      links: { home: lang === 'en' ? 'MainEn.dc.html' : 'Main.dc.html' }
+    };
+  }
+}
+</script>
+</body>
+</html>

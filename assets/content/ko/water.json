@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "language": "ko",
+    "review": "pending",
+    "sources": {
+      "CDC": "CDC, Making Water Safe in an Emergency (2024)",
+      "WHO_SODIS": "WHO, Results of round II of the WHO international scheme to evaluate household water treatment technologies (SODIS)"
+    }
+  },
+  "methods": [
+    {
+      "id": "boil",
+      "label": "끓이기",
+      "intro": "가장 확실한 방법이에요. 연료가 있다면 먼저 이걸 쓰세요.",
+      "sources": [
+        "CDC"
+      ],
+      "steps": [
+        "물이 탁하면 깨끗한 천으로 거르고, 잠시 두어 가라앉힌 윗물만 쓰세요.",
+        "팔팔 끓기 시작한 뒤 1분 더 끓이세요. 높은 산 위(해발 2,000m 이상)라면 3분.",
+        "뚜껑을 덮어 식히고, 깨끗한 통에 담아 두세요."
+      ]
+    },
+    {
+      "id": "bleach",
+      "label": "락스",
+      "intro": "불을 쓸 수 없을 때. 향이 없는 가정용 락스만 쓰세요.",
+      "sources": [
+        "CDC"
+      ],
+      "steps": [
+        "포장에서 염소 농도를 확인하세요. 6~8%라면 물 1L에 2방울, 탁한 물은 4방울.",
+        "잘 섞고 30분 기다리세요.",
+        "약한 락스 냄새가 나야 정상이에요. 냄새가 안 나면 같은 양을 한 번 더 넣고 15분 기다리세요."
+      ]
+    },
+    {
+      "id": "sun",
+      "label": "햇빛",
+      "intro": "연료도 약품도 없을 때. 맑은 물에서만 효과가 있어요.",
+      "sources": [
+        "WHO_SODIS"
+      ],
+      "steps": [
+        "투명한 페트병(2L 이하)에 맑은 물을 채우고 뚜껑을 닫으세요.",
+        "햇빛이 잘 드는 곳에 눕혀서 6시간 두세요. 구름이 많으면 이틀.",
+        "탁한 물, 색이 있는 병, 유리병은 효과가 떨어져요."
+      ]
+    }
+  ]
+}

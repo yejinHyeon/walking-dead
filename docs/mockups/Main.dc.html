@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>홈 · Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column">
+  <div style="flex: 1 1 auto; padding: 56px 20px 16px; display: flex; flex-direction: column; gap: 18px; overflow: hidden">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #A9ADB3">
+        <span style="width: 8px; height: 8px; border-radius: 4px; background: #7FB2FF; display: inline-block"></span>
+        <span>{{t.offline}}</span>
+      </div>
+      <div style="display: flex; gap: 8px">
+      <a href="{{links.sos}}" aria-label="{{t.sosAria}}" style="height: 44px; padding: 0 14px; border-radius: 22px; background: #3A1D12; border: 1px solid {{accent}}; color: {{accent}}; font-size: 14px; font-weight: 700; display: flex; align-items: center; text-decoration: none">SOS</a>
+      <a href="{{links.lang}}" aria-label="{{t.langAria}}" style="height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid #2A2E34; background: #1B1E22; color: #F1F0EC; font-size: 14px; display: flex; align-items: center; gap: 6px; text-decoration: none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"></path></svg>{{t.langName}}</a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <h1 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.3">{{t.h1}}</h1>
+      <p style="margin: 0; font-size: 14px; color: #A9ADB3; line-height: 1.5">{{t.sub}}</p>
+    </div>
+
+    <a href="{{links.aid}}" style="display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: 20px; background: {{accent}}; color: #111315; text-decoration: none">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#111315" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 22px; font-weight: 700">{{t.firstAid}}</span>
+        <span style="font-size: 14px; font-weight: 500">{{t.faSub}}</span>
+      </div>
+    </a>
+
+    <a href="{{links.map}}" style="display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border-radius: 20px; background: #1B1E22; border: 1px solid #2A2E34; color: #F1F0EC; text-decoration: none">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <span style="font-size: 13px; color: #A9ADB3">{{t.nearest}}</span>
+        <span style="font-size: 13px; color: #7FB2FF">{{t.openMap}}</span>
+      </div>
+      <div style="font-size: 19px; font-weight: 700">{{t.shelter}}</div>
+      <div style="display: flex; gap: 14px; font-size: 14px; color: #A9ADB3">
+        <span>{{t.dist}}</span>
+        <span>{{t.dir}}</span>
+      </div>
+    </a>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <a href="{{links.map}}" style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; min-height: 112px; color: #F1F0EC; text-decoration: none">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7FB2FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"></path><path d="M3 8l9 5 9-5"></path><path d="M12 13v8"></path></svg>
+        <span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{t.aidT}}</span>
+        <span style="font-size: 13px; color: #A9ADB3">{{t.aidS}}</span>
+      </a>
+      <a href="{{links.uxo}}" style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; min-height: 112px; color: #F1F0EC; text-decoration: none">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"></path><path d="M12 10v5"></path><path d="M12 18v.5"></path></svg>
+        <span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{t.uxoT}}</span>
+        <span style="font-size: 13px; color: #A9ADB3">{{t.uxoS}}</span>
+      </a>
+      <a href="{{links.map}}" style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; min-height: 112px; color: #F1F0EC; text-decoration: none">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7FB2FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a2 2 0 012-2h12a2 2 0 012 2v16"></path><path d="M12 7v6M9 10h6"></path><path d="M2 21h20"></path></svg>
+        <span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{t.medT}}</span>
+        <span style="font-size: 13px; color: #A9ADB3">{{t.medS}}</span>
+      </a>
+      <a href="{{links.family}}" style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 18px; background: #1B1E22; border: 1px solid #2A2E34; min-height: 112px; color: #F1F0EC; text-decoration: none">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7FB2FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M15 14.5c3 0 6 2 6 5.5"></path></svg>
+        <span style="font-size: 16px; font-weight: 700; line-height: 1.3">{{t.famT}}</span>
+        <span style="font-size: 13px; color: #A9ADB3">{{t.famS}}</span>
+      </a>
+    </div>
+  </div>
+
+  <nav style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 8px 4px 28px; border-top: 1px solid #2A2E34; background: #15171A">
+    <a href="{{links.home}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 44px; font-size: 12px; color: #F1F0EC; font-weight: 700; text-decoration: none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"></path></svg>{{t.navHome}}</a>
+    <a href="{{links.map}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 44px; font-size: 12px; color: #A9ADB3; text-decoration: none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"></path><path d="M9 4v14M15 6v14"></path></svg>{{t.navMap}}</a>
+    <a href="{{links.scan}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 44px; font-size: 12px; color: #A9ADB3; text-decoration: none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5a1 1 0 011-1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3M8 20H5a1 1 0 01-1-1v-3"></path><circle cx="12" cy="12" r="3.5"></circle></svg>{{t.navScan}}</a>
+    <a href="{{links.aid}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 44px; font-size: 12px; color: #A9ADB3; text-decoration: none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"></path></svg>{{t.navAid}}</a>
+    <a href="{{links.supplies}}" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0; min-height: 44px; font-size: 12px; color: #A9ADB3; text-decoration: none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"></path><path d="M3 8l9 5 9-5"></path><path d="M12 13v8"></path></svg>{{t.navSup}}</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"lang":{"editor":"enum","options":["ko","en"],"default":"ko"},"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = {
+      ko: {
+        offline: '오프라인 · 지도 저장됨', langName: '한국어', langAria: '언어 변경',
+        h1: '지금 무엇이 필요하세요?', sub: '인터넷 없이 작동합니다. 위치는 이 폰 밖으로 나가지 않아요.',
+        firstAid: '응급처치', faSub: '출혈 · 화상 · 골절 · 호흡',
+        nearest: '가장 가까운 대피소', openMap: '지도 열기 →', shelter: '[대피소 이름] 지하 1층',
+        dist: '도보 6분 · 450m', dir: '북동쪽',
+        aidT: '구호품 · 물', aidS: '배급 지점 찾기', uxoT: '불발탄 주의', uxoS: '만지지 말고 피하기',
+        medT: '병원 · 약국', medS: '마지막 확인 정보', famT: '가족 집결지', famS: '미리 정한 장소',
+        navHome: '홈', navMap: '지도', navAid: '응급처치', navSafe: '안전', navScan: '스캔', navSup: '보유품', sosAria: '구조 신호'
+      },
+      en: {
+        offline: 'Offline · Map saved', langName: 'English', langAria: 'Change language',
+        h1: 'What do you need right now?', sub: 'Works without internet. Your location never leaves this phone.',
+        firstAid: 'First aid', faSub: 'Bleeding · Burns · Fractures · Breathing',
+        nearest: 'Nearest shelter', openMap: 'Open map →', shelter: '[Shelter name] · Basement 1',
+        dist: '6 min walk · 450 m', dir: 'Northeast',
+        aidT: 'Aid · Water', aidS: 'Find distribution points', uxoT: 'Unexploded ordnance', uxoS: 'Don\u2019t touch, move away',
+        medT: 'Hospitals · Pharmacies', medS: 'Last verified info', famT: 'Family meeting point', famS: 'Your agreed place',
+        navHome: 'Home', navMap: 'Map', navAid: 'First aid', navSafe: 'Safety', navScan: 'Scan', navSup: 'Supplies', sosAria: 'Rescue signal'
+      }
+    };
+    const lang = this.props.lang === 'en' ? 'en' : 'ko';
+    const sfx = lang === 'en' ? 'En' : '';
+    return {
+      accent: this.props.accent ?? '#FF8A3D',
+      t: S[lang],
+      links: { home: 'Main' + sfx + '.dc.html', map: 'Map' + sfx + '.dc.html', aid: lang === 'en' ? 'FirstAidEn.dc.html' : 'FirstAidList.dc.html', scan: 'Scan.dc.html', sos: 'Sos.dc.html', family: 'Family.dc.html', supplies: 'Supplies.dc.html', uxo: 'Uxo' + sfx + '.dc.html', lang: 'Language.dc.html' }
+    };
+  }
+}
+</script>
+</body>
+</html>

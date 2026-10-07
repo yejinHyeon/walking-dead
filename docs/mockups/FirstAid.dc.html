@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>응급처치 · First aid</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 20px">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="{{links.home}}" aria-label="{{t.back}}" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <div style="flex: 1; display: flex; flex-direction: column">
+      <span style="font-size: 13px; color: #A9ADB3">{{t.cat}}</span>
+      <span style="font-size: 18px; font-weight: 700">{{t.topic}}</span>
+    </div>
+    <button aria-label="{{t.listen}}" style="height: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid #2A2E34; background: #1B1E22; color: #F1F0EC; font: inherit; font-size: 14px; display: flex; align-items: center; gap: 6px">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"></path><path d="M17 8a5 5 0 010 8"></path></svg>{{t.listen}}</button>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
+    <sc-for list="{{bars}}" as="b" hint-placeholder-count="4">
+      <div style="{{b.style}}"></div>
+    </sc-for>
+  </div>
+
+  <div style="height: 230px; border-radius: 24px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; position: relative">
+    <span style="position: absolute; left: 16px; top: 14px; font-size: 13px; color: #A9ADB3">{{counter}}</span>
+    <svg width="170" height="150" viewBox="0 0 170 150" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M10 105 C 50 95, 120 95, 160 105" stroke="#A9ADB3" stroke-width="3"></path>
+      <path d="M10 130 C 50 120, 120 120, 160 130" stroke="#A9ADB3" stroke-width="3"></path>
+      <ellipse cx="85" cy="113" rx="18" ry="6" fill="{{accent}}" stroke="none"></ellipse>
+      <rect x="55" y="70" width="60" height="30" rx="10" stroke="#F1F0EC" stroke-width="3"></rect>
+      <path d="M85 20 V 60" stroke="#7FB2FF" stroke-width="4"></path>
+      <path d="M72 48 L85 62 L98 48" stroke="#7FB2FF" stroke-width="4"></path>
+    </svg>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+    <h1 style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.3">{{step.title}}</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #D9D8D3">{{step.body}}</p>
+  </div>
+
+  <div style="display: flex; gap: 10px">
+    <button onClick="{{prev}}" style="width: 110px; height: 56px; border-radius: 18px; border: 1px solid #2A2E34; background: #1B1E22; color: #F1F0EC; font: inherit; font-size: 16px">{{t.prev}}</button>
+    <button onClick="{{next}}" style="flex: 1; height: 56px; border-radius: 18px; border: 0; background: {{accent}}; color: #111315; font: inherit; font-size: 17px; font-weight: 700">{{nextLabel}}</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"lang":{"editor":"enum","options":["ko","en"],"default":"ko"},"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = {
+      ko: {
+        back: '뒤로', cat: '응급처치', topic: '심한 출혈', listen: '듣기', prev: '이전', next: '다음 단계', restart: '처음으로',
+        counter: (a, n) => a + ' / ' + n + '단계',
+        steps: [
+          { title: '상처를 세게 누르세요', body: '깨끗한 천이나 옷으로 상처를 덮고 두 손으로 강하게 누르세요. 천이 없으면 맨손으로라도 바로 누르세요.' },
+          { title: '떼지 말고 계속 누르세요', body: '피가 배어 나와도 천을 떼지 마세요. 그 위에 천을 덧대고 더 세게 누르세요.' },
+          { title: '팔·다리 출혈이 멈추지 않으면', body: '지혈대나 끈으로 상처보다 5~7cm 위(몸통 쪽)를 단단히 묶고, 피가 멈출 때까지 조이세요. 묶은 시간을 꼭 적어두세요.' },
+          { title: '도움을 요청하세요', body: '주변 사람이나 의료진에게 알리세요. 환자를 눕혀 따뜻하게 유지하고, 계속 말을 걸어 의식을 확인하세요.' }
+        ]
+      },
+      en: {
+        back: 'Back', cat: 'First aid', topic: 'Severe bleeding', listen: 'Listen', prev: 'Back', next: 'Next step', restart: 'Start over',
+        counter: (a, n) => 'Step ' + a + ' of ' + n,
+        steps: [
+          { title: 'Press hard on the wound', body: 'Cover the wound with a clean cloth or clothing and press hard with both hands. No cloth? Press with your bare hands right away.' },
+          { title: 'Keep pressing — don\u2019t lift', body: 'If blood soaks through, don\u2019t remove the cloth. Add more on top and press harder.' },
+          { title: 'If an arm or leg keeps bleeding', body: 'Tie a tourniquet or strap tightly 5–7 cm above the wound (toward the body) and tighten until the bleeding stops. Write down the time.' },
+          { title: 'Get help', body: 'Alert people nearby or medical staff. Keep the person lying down and warm, and keep talking to them to check they are conscious.' }
+        ]
+      }
+    };
+    const lang = this.props.lang === 'en' ? 'en' : 'ko';
+    const t = S[lang];
+    const n = t.steps.length;
+    const i = (this.state && this.state.i) || 0;
+    const accent = this.props.accent ?? '#FF8A3D';
+    return {
+      accent,
+      t,
+      links: { home: lang === 'en' ? 'MainEn.dc.html' : 'Main.dc.html' },
+      step: t.steps[i],
+      counter: t.counter(i + 1, n),
+      nextLabel: i === n - 1 ? t.restart : t.next,
+      bars: t.steps.map((s, k) => ({ style: 'height: 6px; border-radius: 3px; background: ' + (k <= i ? accent : '#2A2E34') + ';' })),
+      prev: () => this.setState({ i: Math.max(0, i - 1) }),
+      next: () => this.setState({ i: i === n - 1 ? 0 : i + 1 })
+    };
+  }
+}
+</script>
+</body>
+</html>

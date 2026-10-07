@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "language": "en",
+    "sources": {
+      "IFRC": "IFRC, Be Ready: emergency kit guidance",
+      "KR_MOIS": "행정안전부 국민재난안전포털 비상대비물자"
+    }
+  },
+  "items": [
+    {
+      "id": "water",
+      "t": "Water",
+      "d": "Family size × 3 days (3 L per person per day)"
+    },
+    {
+      "id": "food",
+      "t": "Emergency food",
+      "d": "Things you can eat without cooking"
+    },
+    {
+      "id": "firstaid",
+      "t": "First aid kit",
+      "d": "Bandages, gauze, antiseptic, tourniquet"
+    },
+    {
+      "id": "meds",
+      "t": "Regular medicines",
+      "d": "With a copy of prescriptions"
+    },
+    {
+      "id": "flashlight",
+      "t": "Flashlight · spare batteries",
+      "d": ""
+    },
+    {
+      "id": "power",
+      "t": "Power bank · charging cable",
+      "d": ""
+    },
+    {
+      "id": "radio",
+      "t": "Portable radio",
+      "d": "Hear news when power and networks are down"
+    },
+    {
+      "id": "documents",
+      "t": "ID · copies of key documents",
+      "d": "In a waterproof bag"
+    },
+    {
+      "id": "cash",
+      "t": "Cash",
+      "d": "For when cards don't work"
+    },
+    {
+      "id": "whistle",
+      "t": "Whistle",
+      "d": "Rescue signal if trapped"
+    },
+    {
+      "id": "blanket",
+      "t": "Blanket · spare clothes",
+      "d": ""
+    },
+    {
+      "id": "hygiene",
+      "t": "Masks · hygiene items",
+      "d": ""
+    }
+  ]
+}

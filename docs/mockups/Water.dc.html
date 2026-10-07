@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>마실 물 만들기</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #111315; color: #F1F0EC; font-family: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 56px 20px 32px; gap: 14px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Supplies.dc.html" aria-label="뒤로" style="width: 44px; height: 44px; border-radius: 22px; background: #1B1E22; border: 1px solid #2A2E34; display: flex; align-items: center; justify-content: center; flex: 0 0 auto">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F1F0EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <span style="flex: 1; font-size: 18px; font-weight: 700">마실 물 만들기</span>
+  </div>
+  <div style="display: flex; gap: 8px; padding: 4px; border-radius: 24px; background: #1B1E22; border: 1px solid #2A2E34">
+    <sc-for list="{{tabs}}" as="m" hint-placeholder-count="3">
+      <button onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button>
+    </sc-for>
+  </div>
+  <p style="margin: 0; font-size: 15px; color: #A9ADB3; line-height: 1.5">{{intro}}</p>
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+      <div style="display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: #1B1E22; border: 1px solid #2A2E34">
+        <span style="width: 30px; height: 30px; border-radius: 15px; background: #2A2E34; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex: 0 0 auto">{{s.n}}</span>
+        <span style="font-size: 16px; line-height: 1.55">{{s.t}}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="margin-top: auto; border-radius: 18px; border: 2px solid {{accent}}; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+    <span style="font-size: 15px; font-weight: 700; color: {{accent}}">이런 물은 어떤 방법으로도 안전하지 않아요</span>
+    <span style="font-size: 14px; line-height: 1.6">기름, 연료, 화학약품 냄새가 나거나 색이 이상한 물. 끓여도 독성은 사라지지 않아요.</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF8A3D","options":["#FF8A3D","#F2C14E","#7FB2FF"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = {
+      boil: { label: '끓이기', intro: '가장 확실한 방법이에요. 연료가 있다면 먼저 이걸 쓰세요.', steps: [
+        '물이 탁하면 깨끗한 천으로 거르고, 잠시 두어 가라앉힌 윗물만 쓰세요.',
+        '팔팔 끓기 시작한 뒤 1분 더 끓이세요. 높은 산 위라면 3분.',
+        '뚜껑을 덮어 식히고, 깨끗한 통에 담아 두세요.'] },
+      bleach: { label: '락스', intro: '불을 쓸 수 없을 때. 향이 없는 가정용 락스만 쓰세요.', steps: [
+        '포장에서 염소 농도를 확인하세요. 6~8%라면 물 1L에 2방울, 탁한 물은 4방울.',
+        '잘 섞고 30분 기다리세요.',
+        '약한 락스 냄새가 나야 정상이에요. 냄새가 안 나면 같은 양을 한 번 더 넣고 15분 기다리세요.'] },
+      sun: { label: '햇빛', intro: '연료도 약품도 없을 때. 맑은 물에서만 효과가 있어요.', steps: [
+        '투명한 페트병(2L 이하)에 맑은 물을 채우고 뚜껑을 닫으세요.',
+        '햇빛이 잘 드는 곳에 눕혀서 6시간 두세요. 구름이 많으면 이틀.',
+        '탁한 물, 색이 있는 병, 유리병은 효과가 떨어져요.'] }
+    };
+    const k = (this.state && this.state.k) || 'boil';
+    return {
+      accent: this.props.accent ?? '#FF8A3D',
+      intro: T[k].intro,
+      steps: T[k].steps.map((t, i) => ({ n: String(i + 1), t })),
+      tabs: Object.keys(T).map((id) => ({ label: T[id].label,
+        style: 'flex: 1; height: 44px; border-radius: 20px; border: 0; font: inherit; font-size: 15px; font-weight: 700; ' + (id === k ? 'background: #F1F0EC; color: #111315;' : 'background: transparent; color: #A9ADB3;'),
+        pick: () => this.setState({ k: id }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

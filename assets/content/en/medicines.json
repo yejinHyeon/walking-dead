@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "language": "en",
+    "review": "pending",
+    "sample": true,
+    "note": "샘플 5종. 전체 DB는 tools/ 수집 스크립트로 식약처 낱알식별·e약은요 데이터를 받아 지역팩으로 배포.",
+    "sources": {
+      "MFDS": "식품의약품안전처 의약품안전나라 · e약은요 (일반 성분 정보 요약)",
+      "WHO_EML": "WHO Model List of Essential Medicines / WHO Model Formulary"
+    }
+  },
+  "medicines": [
+    {
+      "id": "acetaminophen",
+      "keywords": [
+        "아세트아미노펜",
+        "acetaminophen",
+        "paracetamol",
+        "파라세타몰",
+        "타이레놀",
+        "tylenol"
+      ],
+      "name": "Acetaminophen (paracetamol)",
+      "category": "Fever and pain reliever",
+      "what": "Lowers fever and reduces pain. It does not reduce inflammation.",
+      "mustKnow": [
+        "Follow the dose and interval on the package",
+        "Taking it with cold medicines that contain the same ingredient can cause overdose",
+        "Be especially careful if you drink alcohol often or have liver disease"
+      ]
+    },
+    {
+      "id": "ibuprofen",
+      "keywords": [
+        "이부프로펜",
+        "ibuprofen",
+        "부루펜",
+        "애드빌",
+        "advil"
+      ],
+      "name": "Ibuprofen",
+      "category": "Anti-inflammatory pain and fever reliever",
+      "what": "Reduces pain and fever and calms inflammation (swelling).",
+      "mustKnow": [
+        "Take with food, not on an empty stomach (risk of stomach bleeding)",
+        "Avoid if dehydrated or if you have kidney disease",
+        "Don't take with other anti-inflammatory painkillers (such as aspirin)",
+        "Don't take in late pregnancy"
+      ]
+    },
+    {
+      "id": "loperamide",
+      "keywords": [
+        "로페라미드",
+        "loperamide",
+        "imodium",
+        "이모디움"
+      ],
+      "name": "Loperamide",
+      "category": "Anti-diarrhoea medicine",
+      "what": "Reduces how often diarrhoea comes. It does not treat the cause.",
+      "mustKnow": [
+        "Don't take it if there is blood in the stool or a high fever",
+        "Don't give to children without checking with a medical worker",
+        "With diarrhoea, replacing fluids (oral rehydration) comes before medicine"
+      ]
+    },
+    {
+      "id": "cetirizine",
+      "keywords": [
+        "세티리진",
+        "cetirizine",
+        "지르텍",
+        "zyrtec"
+      ],
+      "name": "Cetirizine",
+      "category": "Allergy medicine (antihistamine)",
+      "what": "Reduces runny nose, sneezing, itching and hives.",
+      "mustKnow": [
+        "It can make you drowsy. Be careful when you need to stay alert",
+        "For severe allergy — swollen lips or tongue, difficulty breathing — this medicine is not enough: get help right away"
+      ]
+    },
+    {
+      "id": "povidone_iodine",
+      "keywords": [
+        "포비돈",
+        "povidone",
+        "베타딘",
+        "betadine",
+        "빨간약"
+      ],
+      "name": "Povidone-iodine",
+      "category": "Wound antiseptic (for skin)",
+      "what": "Disinfects the skin around a wound.",
+      "mustKnow": [
+        "Do not swallow",
+        "Rinse the wound with clean water first, then apply around it",
+        "With iodine allergy or thyroid disease, don't use it on large areas for long"
+      ]
+    }
+  ]
+}
